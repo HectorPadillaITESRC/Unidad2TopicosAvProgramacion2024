@@ -1,0 +1,22 @@
+﻿<Window x:Class="Ejercicio1.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ejercicio1"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800"  Background="#353535" >
+    <WrapPanel Margin="30" >
+        <Border Background="#F7FEC8" Width="180"  BorderThickness="2" BorderBrush="Black" >
+            <Border.RenderTransform>
+                <RotateTransform Angle="-5" CenterX="90"></RotateTransform>
+            </Border.RenderTransform>
+            <StackPanel Margin="5">
+               
+                <TextBlock Height="20" Text="Sticky Note" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <TextBlock  Height="70"  Text="El color #353535 se puede describir como un gris oscuro profundo. No tiene un nombre específico en los estándares de colores comúnmente utilizados, como los nombres de colores en CSS o en sistemas de diseño específicos. Sin embargo, podrías referirte a él simplemente como gris oscuro en tus aplicaciones o diseños." VerticalAlignment="Center"  
+                         TextWrapping="Wrap" TextTrimming="CharacterEllipsis" />
+            </StackPanel>
+        </Border>
+    </WrapPanel>
+</Window>
