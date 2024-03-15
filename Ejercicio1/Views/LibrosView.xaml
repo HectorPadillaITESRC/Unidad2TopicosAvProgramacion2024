@@ -8,7 +8,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <ContextMenu x:Key="menu1">
-            <MenuItem Header="Editar"></MenuItem>
+            <MenuItem Header="Editar" Command="{Binding Source={x:Reference uc1}, 
+            Path=DataContext.VerEditarCommand}"></MenuItem>
             <MenuItem Header="Eliminar" Command="{Binding Source={x:Reference uc1}, 
                 Path=DataContext.VerEliminarCommand}"></MenuItem>
         </ContextMenu>

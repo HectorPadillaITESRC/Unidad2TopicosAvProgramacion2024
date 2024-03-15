@@ -33,7 +33,13 @@
                             </Setter.Value>
                         </Setter>
                     </DataTrigger>
-
+                    <DataTrigger Binding="{Binding Ventana}" Value="{x:Static viewmodels:Ventanas.Editar}">
+                        <Setter Property="Content" >
+                            <Setter.Value>
+                                <views:DatosLibroView></views:DatosLibroView>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
 
                     <DataTrigger Binding="{Binding Ventana}" Value="{x:Static viewmodels:Ventanas.Eliminar}">
                         <Setter Property="Content" >

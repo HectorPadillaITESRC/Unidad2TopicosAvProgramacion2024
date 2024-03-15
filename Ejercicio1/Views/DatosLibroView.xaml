@@ -37,8 +37,54 @@
                 </DockPanel>
                 <TextBlock TextAlignment="Center" Margin="5" FontSize="8" Foreground="Red" Text="{Binding  Error}"></TextBlock>
                 <WrapPanel HorizontalAlignment="Center" Margin="10">
-                    <Button Command="{Binding AgregarCommand}">Agregar</Button>
-                    <Button Visibility="Hidden">Guardar</Button>
+
+                    <Button Padding="10,5">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Margin" Value="0,0,10,0"></Setter>
+                                <Setter Property="Padding" Value="15,5"></Setter>
+                                <Setter Property="Command" Value="{Binding AgregarCommand}"></Setter>
+                                <Setter Property="Content" Value="Agregar"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Ventana}" Value="{x:Static viewmodels:Ventanas.Editar}">
+                                        <Setter Property="Command" Value="{Binding GuardarCommand}"></Setter>
+                                        <Setter Property="Content" Value="Guardar"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <ContentControl>
+                        <ContentControl.Resources>
+                            <Button x:Key="btnAgregar" Command="{Binding AgregarCommand}" Content="Agregar"></Button>
+                            <Button x:Key="btnGuardar" Command="{Binding GuardarCommand}" Content="Guardar"></Button>
+                        </ContentControl.Resources>
+                        <ContentControl.Style>
+                            <Style TargetType="ContentControl">
+                                <Setter Property="Content" Value="{StaticResource btnAgregar}"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Ventana}" Value="{x:Static viewmodels:Ventanas.Editar}">
+                                        <Setter Property="Content" Value="{StaticResource btnGuardar}"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentControl.Style>
+                    </ContentControl>
+
+                    <!--<Button Command="{Binding GuardarCommand}" Content="Guardar">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Margin" Value="0,0,10,0"></Setter>
+                                <Setter Property="Padding" Value="15,5"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Ventana}" Value="{x:Static viewmodels:Ventanas.Agregar}">
+                                        <Setter Property="Visibility" Value="Collapsed"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>-->
                     <Button Command="{Binding CancelarCommand}">Cancelar</Button>
                 </WrapPanel>
             </StackPanel>

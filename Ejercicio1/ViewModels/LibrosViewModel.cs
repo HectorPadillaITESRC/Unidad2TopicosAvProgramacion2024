@@ -14,7 +14,7 @@ using System.IO;
 namespace Ejercicio1.ViewModels
 {
 
-    public enum Ventanas { Agregar, Eliminar, Lista }
+    public enum Ventanas { Agregar, Editar, Eliminar, Lista }
 
     public class LibrosViewModel : INotifyPropertyChanged
     {
@@ -67,9 +67,25 @@ namespace Ejercicio1.ViewModels
             Actualizar(nameof(Ventana));
         }
 
+        int posAnterior;
+
         private void VerEditar()
         {
-            throw new NotImplementedException();
+            if (Libro != null)
+            {
+                var clon = new Libro
+                {
+                    Autor = Libro.Autor,
+                    ImagenPortada = Libro.ImagenPortada,
+                    Titulo = Libro.Titulo
+                };
+
+                posAnterior = Libros.IndexOf(Libro); //posicion donde estaba el libro original
+                Libro = clon;
+
+                Ventana = Ventanas.Editar;
+                Actualizar(nameof(Ventana));
+            }
         }
 
         private void VerAgregar()
@@ -87,7 +103,38 @@ namespace Ejercicio1.ViewModels
 
         private void Guardar()
         {
-            throw new NotImplementedException();
+            if (Libro != null)
+            {
+                Error = "";
+
+                //Validar
+                if (string.IsNullOrWhiteSpace(Libro.Titulo))
+                {
+                    Error = "Escriba el titulo del libro.";
+                }
+                if (string.IsNullOrWhiteSpace(Libro.Autor))
+                {
+                    Error = "Escriba el autor del libro";
+                }
+                if (string.IsNullOrWhiteSpace(Libro.ImagenPortada) || !Libro.ImagenPortada.StartsWith("http")
+                   || !Libro.ImagenPortada.EndsWith(".jpg"))
+                {
+                    Error = "Escriba la dirección de una imagen en JPEG.";
+                }
+
+                Actualizar(nameof(Error));
+
+
+                if (Error == "")//Si no hay error lo guardo
+                {
+                    Libros[posAnterior] = Libro; //Reemplazo en la posicion original del libro a editar
+                    Serializar();
+
+                    Ventana = Ventanas.Lista;
+                    Actualizar(nameof(Ventana));
+                }
+
+            }
         }
 
         private void Agregar()
