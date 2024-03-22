@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Ejercicio2.Views.DetallesNoticiasView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Ejercicio2.Views" xmlns:viewmodels="clr-namespace:Ejercicio2.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:NoticiasViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+    <DockPanel Margin="10">
+        <TextBlock Text="{Binding Noticia.Titulo}" DockPanel.Dock="Top" FontSize="30" 
+                   TextWrapping="Wrap" FontFamily="Georgia" TextAlignment="Center" FontWeight="Bold">
+        </TextBlock>
+        <TextBlock Text="{Binding Noticia.Fecha, StringFormat='dd-MM-yyyy'}" HorizontalAlignment="Right" DockPanel.Dock="Top" Margin="10" 
+                   Foreground="Gray"></TextBlock>
+        <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Bottom">
+            <Button Padding="15,5" Margin="5" Command="{Binding CambiarVistaCommand}" CommandParameter="{x:Static viewmodels:Vistas.Lista}">Regresar</Button>
+        </WrapPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <Image  Stretch="Uniform"  Height="250" Source="{Binding Noticia.URLImagen}"></Image>
+                <TextBlock TextWrapping="Wrap" TextAlignment="Justify" FontSize="20" Margin="10" Text="{Binding Noticia.Contenido }"></TextBlock>
+            </StackPanel>
+
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

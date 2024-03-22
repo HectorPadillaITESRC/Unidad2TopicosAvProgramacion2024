@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="Ejercicio2.Views.NoticiaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Ejercicio2.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="150"  Background="White">
+    <StackPanel Width="150" Margin="5">
+        <Image  Stretch="Uniform"  Height="100" Source="{Binding URLImagen}"></Image>
+        <TextBlock Height="50" Text="{Binding Titulo}" DockPanel.Dock="Top" 
+                   FontSize="13"  TextTrimming="WordEllipsis"
+            TextWrapping="Wrap" FontFamily="Georgia" TextAlignment="Center" FontWeight="Bold">
+        </TextBlock>
+        <TextBlock Text="{Binding Fecha, StringFormat='dd-MM-yyyy'}" HorizontalAlignment="Right" DockPanel.Dock="Top" Margin="10" 
+            Foreground="Gray"></TextBlock>
+    </StackPanel>
+</UserControl>

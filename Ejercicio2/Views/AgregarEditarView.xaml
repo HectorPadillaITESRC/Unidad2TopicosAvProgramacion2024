@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Ejercicio2.Views.AgregarEditarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Ejercicio2.Views" xmlns:viewmodels="clr-namespace:Ejercicio2.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:NoticiasViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"  Background="#50000000">
+    <Border Padding="5" Background="White" BorderBrush="Black" BorderThickness="2" 
+            Width="300" Margin="10">
+
+        <DockPanel Margin="10">
+            <StackPanel DockPanel.Dock="Top">
+                <Label>Titulo:</Label>
+                <TextBox Text="{Binding Noticia.Titulo}"></TextBox>
+                <Label>Fecha:</Label>
+                <DatePicker SelectedDate="{Binding Noticia.Fecha}"></DatePicker>
+                <Label>Dirección URL de la imagen:</Label>
+                <TextBox Text="{Binding Noticia.URLImagen}"></TextBox>
+                <Label>Contenido:</Label>
+            </StackPanel>
+            <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Bottom">
+                <Button Padding="15,5" Margin="5" Command="{Binding AgregarCommand}" >Agregar</Button>
+                <Button Padding="15,5" Margin="5" Command="{Binding CambiarVistaCommand}"
+                        CommandParameter="{x:Static viewmodels:Vistas.Lista}">Cancelar</Button>
+            </WrapPanel>
+            <TextBlock DockPanel.Dock="Bottom" Foreground="Red" TextAlignment="Center" Text="{Binding Error}"></TextBlock>
+            
+            <TextBox AcceptsReturn="True" Text="{Binding Noticia.Contenido}"></TextBox>
+
+        </DockPanel>
+    </Border>
+
+</UserControl>
